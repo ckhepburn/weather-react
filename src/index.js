@@ -8,6 +8,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Weather />
+    <p>
+      This project was coded by <a href='https://www.shecodes.io/'>SheCodes</a>{' '}
+      and is open-sourced on{' '}
+      <a href='https://github.com/ckhepburn/weather-react'>GitHub</a> and hosted
+      on{' '}
+      <a href='https://app.netlify.com/sites/comfy-choux-9204e2/overview'>
+        Netlify
+      </a>
+    </p>
   </React.StrictMode>
 );
 
