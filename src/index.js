@@ -9,11 +9,19 @@ root.render(
   <React.StrictMode>
     <Weather />
     <p>
-      This project was coded by <a href='https://www.shecodes.io/'>SheCodes</a>{' '}
+      This project was coded by{' '}
+      <a href='https://www.shecodes.io/' target='blank'>
+        SheCodes
+      </a>{' '}
       and is open-sourced on{' '}
-      <a href='https://github.com/ckhepburn/weather-react'>GitHub</a> and hosted
-      on{' '}
-      <a href='https://app.netlify.com/sites/comfy-choux-9204e2/overview'>
+      <a href='https://github.com/ckhepburn/weather-react' target='blank'>
+        GitHub
+      </a>{' '}
+      and hosted on{' '}
+      <a
+        href='https://app.netlify.com/sites/comfy-choux-9204e2/overview'
+        target='blank'
+      >
         Netlify
       </a>
     </p>
