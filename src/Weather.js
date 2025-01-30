@@ -4,22 +4,11 @@ import axios from 'axios';
 
 export default function Weather() {
   const [ready, setReady] = useState(false);
-  const [weatherdata, setweatherData] = useState(null);
+  const [weatherData, setweatherData] = useState(null);
   function handleResponse(response) {
-    console.log(response.data);
     setweatherData(response.data.main.temp);
     setReady(true);
   }
-
-  let weatherData = {
-    city: 'New York',
-    temperature: 19,
-    date: 'Tuesday 10:00',
-    description: 'Cloudy',
-    imgUrl: 'https://ssl.gstatic.com/onebox/weather/64/sunny.png',
-    humidity: 80,
-    wind: 10,
-  };
 
   if (ready) {
     return (
