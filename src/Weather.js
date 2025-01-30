@@ -84,9 +84,18 @@ export default function Weather() {
       </div>
     );
   } else {
+    let weatherData = {
+      city: 'New York',
+      temperature: 19,
+      date: 'Tuesday 10:00',
+      description: 'Cloudy',
+      imgUrl: 'https://ssl.gstatic.com/onebox/weather/64/sunny.png',
+      humidity: 80,
+      wind: 10,
+    };
+
     const apiKey = '23ba5449atfff1c0e02c24fb555af64o';
-    let city = 'New York';
-    const apiUrl = `https://api.shecodes.io/weather/v1/current?query={city}&key={apiKey}&units=metric`;
+    const apiUrl = `https://api.shecodes.io/weather/v1/current?query={city}&key={apiKey)&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 
     return 'Loading...';
