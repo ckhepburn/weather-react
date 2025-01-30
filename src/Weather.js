@@ -6,7 +6,7 @@ export default function Weather() {
   const [ready, setReady] = useState(false);
   const [weatherData, setweatherData] = useState(null);
   function handleResponse(response) {
-    setweatherData(response.data.main.temp);
+    setweatherData(response.data.temperature);
     setReady(true);
   }
 
@@ -94,8 +94,7 @@ export default function Weather() {
       wind: 10,
     };
 
-    const apiKey = '23ba5449atfff1c0e02c24fb555af64o';
-    const apiUrl = `https://api.shecodes.io/weather/v1/current?query={city}&key={apiKey)&units=metric`;
+    const apiUrl = `https://api.shecodes.io/weather/v1/current?query={city}&key=23ba5449atfff1c0e02c24fb555af64o&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 
     return 'Loading...';
