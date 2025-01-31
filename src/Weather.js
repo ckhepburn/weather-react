@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Weather.css';
 import axios from 'axios';
 
-export default function Weather() {
+export default function Weather(props) {
   const [city, setCity] = useState('New York');
   const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
@@ -46,7 +46,7 @@ export default function Weather() {
             <h1>{weatherData.city}</h1>
             <ul>
               <li>Last updated: {weatherData.date}</li>
-              <li>{weatherData.description}</li>
+              <li className='text-capitalize'>{weatherData.description}</li>
             </ul>
           </div>
           <div className='row'>
@@ -58,7 +58,7 @@ export default function Weather() {
                   className='float-left'
                 />
                 <div className='float-left'>
-                  <strong>{weatherData.temperature}</strong>
+                  <strong>{Math.round(weatherData.temperature)}</strong>
                   <span className='units'>
                     <a href='/'>°C</a> | <a href='/'>°F</a>
                   </span>
@@ -93,7 +93,7 @@ export default function Weather() {
       </div>
     );
   } else {
-    const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=23ba5449atfff1c0e02c24fb555af64o&units=metric`;
+    const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=23ba5449atfff1c0e02c24fb555af64o&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 
     return 'Loading...';
