@@ -9,6 +9,23 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Weather defaultCity='New York' />
+    <footer>
+      This project was coded by Carolyn Thomas for{' '}
+      <a href='https://www.shecodes.io/' target='blank'>
+        SheCodes
+      </a>{' '}
+      and is open-sourced on{' '}
+      <a href='https://github.com/ckhepburn/weather-react' target='blank'>
+        GitHub
+      </a>{' '}
+      and hosted on{' '}
+      <a
+        href='https://app.netlify.com/sites/comfy-choux-9204e2/overview'
+        target='blank'
+      >
+        Netlify
+      </a>
+    </footer>
   </React.StrictMode>
 );
 

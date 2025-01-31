@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import FormattedDate from './FormatedDate';
+import WeatherInfo from './WeatherInfo';
 import './Weather.css';
 import axios from 'axios';
 
 export default function Weather(props) {
-  const [city, setCity] = useState('New York');
+  const [city, setCity] = useState(props.defaultCity);
   const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
     console.log(response.data);
@@ -20,11 +20,25 @@ export default function Weather(props) {
     });
   }
 
+  function search() {
+    const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=23ba5449atfff1c0e02c24fb555af64o&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
+
   if (weatherData.ready) {
     return (
       <div className='Weather'>
         <div className='container'>
-          <form className='mb-3'>
+          <form onSubmit={handleSubmit} className='mb-3'>
             <div className='row'>
               <div className='col-9'>
                 <input
@@ -32,6 +46,7 @@ export default function Weather(props) {
                   placeholder='Type a city..'
                   className='form-control'
                   autoComplete='off'
+                  onChange={handleCityChange}
                 />
               </div>
               <div className='col-3'>
@@ -43,62 +58,12 @@ export default function Weather(props) {
               </div>
             </div>
           </form>
-          <div className='overview'>
-            <h1>{weatherData.city}</h1>
-            <ul>
-              <li>
-                Last updated: <FormattedDate date={weatherData.date} />
-              </li>
-              <li className='text-capitalize'>{weatherData.description}</li>
-            </ul>
-          </div>
-          <div className='row'>
-            <div className='col-6'>
-              <div className='clearfix weather-temperature'>
-                <img
-                  src={weatherData.imgUrl}
-                  alt={weatherData.description}
-                  className='float-left'
-                />
-                <div className='float-left'>
-                  <strong>{Math.round(weatherData.temperature)}</strong>
-                  <span className='units'>
-                    <a href='/'>°C</a> | <a href='/'>°F</a>
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className='col-6'>
-              <ul>
-                <li>Humidity: {weatherData.humidity}%</li>
-                <li>Wind: {weatherData.wind} km/h</li>
-              </ul>
-            </div>
-          </div>
-          <footer>
-            This project was coded by Carolyn Thomas for{' '}
-            <a href='https://www.shecodes.io/' target='blank'>
-              SheCodes
-            </a>{' '}
-            and is open-sourced on{' '}
-            <a href='https://github.com/ckhepburn/weather-react' target='blank'>
-              GitHub
-            </a>{' '}
-            and hosted on{' '}
-            <a
-              href='https://app.netlify.com/sites/comfy-choux-9204e2/overview'
-              target='blank'
-            >
-              Netlify
-            </a>
-          </footer>
+          <WeatherInfo data={weatherData} />
         </div>
       </div>
     );
   } else {
-    const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=23ba5449atfff1c0e02c24fb555af64o&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-
+    search();
     return 'Loading...';
   }
 }
