@@ -3,15 +3,23 @@ import './Weather.css';
 import axios from 'axios';
 
 export default function Weather() {
-  const [ready, setReady] = useState(false);
-  const [weatherData, setweatherData] = useState(null);
+  const [city, setCity] = useState('New York');
+  const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
     console.log(response.data);
-    setweatherData(response.data.temperature);
-    setReady(true);
+    setWeatherData({
+      ready: true,
+      city: response.data.city,
+      temperature: response.data.temperature.current,
+      date: response.data.time,
+      description: response.data.condition.description,
+      imgUrl: response.data.condition.icon_url,
+      humidity: response.data.temperature.humidity,
+      wind: response.data.wind.speed,
+    });
   }
 
-  if (ready) {
+  if (weatherData.ready) {
     return (
       <div className='Weather'>
         <div className='container'>
