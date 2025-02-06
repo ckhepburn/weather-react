@@ -11,17 +11,26 @@ root.render(
     <Weather defaultCity='New York' />
     <footer>
       This project was coded by Carolyn Thomas for{' '}
-      <a href='https://www.shecodes.io/' target='blank'>
+      <a
+        href='https://www.shecodes.io/'
+        target='blank'
+        rel='noopener noreferrer'
+      >
         SheCodes
       </a>{' '}
       and is open-sourced on{' '}
-      <a href='https://github.com/ckhepburn/weather-react' target='blank'>
+      <a
+        href='https://github.com/ckhepburn/weather-react'
+        target='blank'
+        rel='noopener noreferrer'
+      >
         GitHub
       </a>{' '}
       and hosted on{' '}
       <a
         href='https://app.netlify.com/sites/comfy-choux-9204e2/overview'
         target='blank'
+        rel='noopener noreferrer'
       >
         Netlify
       </a>
